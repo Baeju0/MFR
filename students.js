@@ -26,7 +26,10 @@ console.log("우수 학생들:", highAchievers);
 
 
 // 3. 전체 학생들의 평균 점수 계산 (reduce)
-const totalAverageScore = '';
+// const totalAverageScore = '';
+const totalAverageScore = studentsWithAverage.reduce(function (avgP, StudentS) {
+    return avgP + StudentS;
+}, 0)/ students.length;
 console.log("전체 평균 점수:", totalAverageScore);
 
 
