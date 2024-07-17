@@ -8,7 +8,13 @@ const students = [
 ];
 
 // 학생들의 평균 점수 계산(map)
-const studentsWithAverage = '';
+const studentsWithAverage = students.map(function (student) {
+    let studentScore = Object.values(student.scores);
+    let studentAvg = studentScore.reduce(function (acc, cur) {
+        return acc + cur;
+    }, 0);
+    return studentAvg/studentScore.length;
+});
 console.log("학생들의 평균 점수:", studentsWithAverage);
 
 
