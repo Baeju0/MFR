@@ -26,7 +26,6 @@ console.log("우수 학생들:", highAchievers);
 
 
 // 3. 전체 학생들의 평균 점수 계산 (reduce)
-// const totalAverageScore = '';
 const totalAverageScore = studentsWithAverage.reduce(function (avgP, StudentS) {
     return avgP + StudentS;
 }, 0)/ students.length;
@@ -34,7 +33,14 @@ console.log("전체 평균 점수:", totalAverageScore);
 
 
 // 4. 최고 평균 점수를 받은 학생 찾기 (reduce)
-const topStudent = '';
+// const topStudent = '';
+const topStudent = studentsWithAverage.reduce(function (bigyo, stAvg) {
+    if (stAvg > bigyo) {
+        return stAvg;
+    } else {
+        return bigyo;
+    }
+}, 0);
 console.log("최고 평균 점수를 받은 학생:", topStudent);
 
 
