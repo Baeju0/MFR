@@ -9,11 +9,11 @@ const students = [
 
 // 1. 학생들의 평균 점수 계산(map)
 const studentsWithAverage = students.map(function (student) {
-    let studentScore = Object.values(student.scores);
-    let studentAvg = studentScore.reduce(function (acc, cur) {
+    let updateData = {name: student.name, scores: Object.values(student.scores)};
+    const studentSum = updateData.scores.reduce(function (acc, cur) {
         return acc + cur;
     }, 0);
-    return studentAvg/studentScore.length;
+    return {name: updateData.name, scores: (studentSum / updateData.scores.length)};
 });
 console.log("학생들의 평균 점수:", studentsWithAverage);
 
@@ -26,19 +26,19 @@ console.log("우수 학생들:", highAchievers);
 
 
 // 3. 전체 학생들의 평균 점수 계산 (reduce)
-const totalAverageScore = studentsWithAverage.reduce(function (avgP, StudentS) {
-    return avgP + StudentS;
+const totalAverageScore = studentsWithAverage.reduce(function (currentTotalScore, studentScore) {
+    return currentTotalScore + studentScore;
 }, 0)/ students.length;
 console.log("전체 평균 점수:", totalAverageScore);
 
 
 // 4. 최고 평균 점수를 받은 학생 찾기 (reduce)
 // const topStudent = '';
-const topStudent = studentsWithAverage.reduce(function (bigyo, stAvg) {
-    if (stAvg > bigyo) {
-        return stAvg;
+const topStudent = studentsWithAverage.reduce(function (acc, studentScoreAvg) {
+    if (studentScoreAvg > acc) {
+        return studentScoreAvg;
     } else {
-        return bigyo;
+        return acc;
     }
 }, 0);
 console.log("최고 평균 점수를 받은 학생:", topStudent);
@@ -46,11 +46,41 @@ console.log("최고 평균 점수를 받은 학생:", topStudent);
 
 // 5. 수학에서 최고 점수를 받은 학생 찾기 (reduce)
 // const topMathStudent = '';
-const topMathStudent = students.map(function (st) {
-    let maScore = Object.values(st.scores);
-    return {name: st.name, scores : maScore[0]};
-});
-console.log("수학에서 최고 점수를 받은 학생:", topMathStudent);
+
+// 학생 이름&수학 점수 배열 for문 사용
+// let nameMathFor = [];
+// for (let i=0; i<students.length; i++) {
+//     nameMathFor.push({name: students[i].name, math: students[i].scores.math});
+// }
+// console.log(nameMathFor[0].name);
+
+// 학생 이름&수학 점수 배열 map함수 이용
+// const nameMathMap = students.map(function (stud){
+//     return {name: stud.name, math: stud.scores.math};
+// });
+// console.log(nameMathMap);
+
+// const topMathStudent = students.map(function (st) {
+//     let maScore = Object.values(st.scores);
+//     return {name: st.name, scores : maScore[0]};
+// });
+// console.log("수학에서 최고 점수를 받은 학생:", topMathStudent);
+//
+// const topMathStudent = nameMathMap.reduce(function (bestMath, math){
+//     nameMathMap.
+// })
+
+// const topMath = nameMathMap.reduce(function (bestMath, stMath, index){
+//     if (stMath.math > bestMath) {
+//         return stMath.math;
+//     } else if (stMath.math < bestMath) {
+//         return bestMath;
+//     } if (bestMath === nameMathMap[index].math) {
+//         return nameMathMap[index].name;
+//     }
+// }, 0);
+// console.log(topMath);
+
 
 
 // 6. 모든 학생들의 점수를 과목별로 합치기 (reduce)
