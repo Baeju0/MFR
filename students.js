@@ -10,7 +10,7 @@ const students = [
 // 1. 학생들의 평균 점수 계산(map)
 const studentsWithAverage = students.map(function (student) {
     let updateData = {name: student.name, scores: Object.values(student.scores)};
-    const studentSum = updateData.scores.reduce(function (acc, cur) {
+    let studentSum = updateData.scores.reduce(function (acc, cur) {
         return acc + cur;
     }, 0);
     return {name: updateData.name, scores: (studentSum / updateData.scores.length)};
@@ -19,8 +19,8 @@ console.log("학생들의 평균 점수:", studentsWithAverage);
 
 
 // 2. 평균 점수가 85점 이상인 학생 필터링(filter)
-const highAchievers = studentsWithAverage.filter(function (score) {
-    return score >= 85;
+const highAchievers = studentsWithAverage.filter(function (studentAvg) {
+    return studentAvg.scores >= 85;
 });
 console.log("우수 학생들:", highAchievers);
 
