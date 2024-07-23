@@ -34,11 +34,14 @@ console.log("전체 평균 점수:", totalAverageScore);
 
 // 4. 최고 평균 점수를 받은 학생 찾기 (reduce)
 // const topStudent = '';
-const topStudent = studentsWithAverage.reduce(function (acc, studentScoreAvg) {
-    if (studentScoreAvg > acc) {
-        return studentScoreAvg;
+const topStudent = studentsWithAverage.reduce(function (acc, cur) {
+    let a = acc;
+
+    if (cur.scores > acc) {
+        return cur.scores;
     } else {
-        return acc;
+        a;
+        return cur.name;
     }
 }, 0);
 console.log("최고 평균 점수를 받은 학생:", topStudent);
