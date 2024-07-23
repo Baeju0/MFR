@@ -33,7 +33,6 @@ console.log("전체 평균 점수:", totalAverageScore);
 
 
 // 4. 최고 평균 점수를 받은 학생 찾기 (reduce)
-// const topStudent = '';
 const topStudent = studentsWithAverage.reduce(function (acc, cur) {
     let a = acc;
 
@@ -48,41 +47,20 @@ console.log("최고 평균 점수를 받은 학생:", topStudent);
 
 
 // 5. 수학에서 최고 점수를 받은 학생 찾기 (reduce)
-// const topMathStudent = '';
+let mathStudent = [];
 
-// 학생 이름&수학 점수 배열 for문 사용
-// let nameMathFor = [];
-// for (let i=0; i<students.length; i++) {
-//     nameMathFor.push({name: students[i].name, math: students[i].scores.math});
-// }
-// console.log(nameMathFor[0].name);
+const studentMathScores = students.map(function (student) {
+    return mathStudent = {name: student.name, mathScores: [student.scores.math]};
+});
 
-// 학생 이름&수학 점수 배열 map함수 이용
-// const nameMathMap = students.map(function (stud){
-//     return {name: stud.name, math: stud.scores.math};
-// });
-// console.log(nameMathMap);
-
-// const topMathStudent = students.map(function (st) {
-//     let maScore = Object.values(st.scores);
-//     return {name: st.name, scores : maScore[0]};
-// });
-// console.log("수학에서 최고 점수를 받은 학생:", topMathStudent);
-//
-// const topMathStudent = nameMathMap.reduce(function (bestMath, math){
-//     nameMathMap.
-// })
-
-// const topMath = nameMathMap.reduce(function (bestMath, stMath, index){
-//     if (stMath.math > bestMath) {
-//         return stMath.math;
-//     } else if (stMath.math < bestMath) {
-//         return bestMath;
-//     } if (bestMath === nameMathMap[index].math) {
-//         return nameMathMap[index].name;
-//     }
-// }, 0);
-// console.log(topMath);
+let topMathStudent = studentMathScores.reduce(function (acc, cur) {
+    if (cur.mathScores > acc) {
+        return cur.mathScores;
+    } else {
+        return cur.name;
+    }
+    }, 0);
+console.log("수학에서 최고 점수를 받은 학생:", topMathStudent);
 
 
 
