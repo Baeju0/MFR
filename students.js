@@ -47,10 +47,8 @@ console.log("최고 평균 점수를 받은 학생:", topStudent);
 
 
 // 5. 수학에서 최고 점수를 받은 학생 찾기 (reduce)
-let mathStudent = [];
-
 const studentMathScores = students.map(function (student) {
-    return mathStudent = {name: student.name, mathScores: [student.scores.math]};
+    return {name: student.name, mathScores: [student.scores.math]};
 });
 
 let topMathStudent = studentMathScores.reduce(function (acc, cur) {
