@@ -79,6 +79,9 @@ console.log("과목 별 점수:", subjectScores);
 
 
 // 7. 과목별 평균 점수 계산하기 (map)
-const subjectAverages = '';
-console.log("과목별 평균 점수:", subjectAverages);
+const subjectAverages = Object.keys(subjectScores).map(function (subject) {
+    return {[subject] : subjectScores[subject]/students.length}
+});
+
+console.log("과목별 평균 점수:", subjectAverages)
 
