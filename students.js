@@ -47,11 +47,16 @@ console.log("최고 평균 점수를 받은 학생:", topStudent);
 
 
 // 5. 수학에서 최고 점수를 받은 학생 찾기 (reduce)
-const studentMathScores = students.map(function (student) {
-    return {name: student.name, mathScores: [student.scores.math]};
+const studentSubjectScores = students.map(function (student) {
+    return {
+            name: student.name,
+            mathScores: [student.scores.math],
+            englishScores: [student.scores.english],
+            scienceScores: [student.scores.science]
+    };
 });
 
-let topMathStudent = studentMathScores.reduce(function (acc, cur) {
+let topMathStudent = studentSubjectScores.reduce(function (acc, cur) {
     if (cur.mathScores > acc) {
         return cur.mathScores;
     } else {
@@ -61,10 +66,16 @@ let topMathStudent = studentMathScores.reduce(function (acc, cur) {
 console.log("수학에서 최고 점수를 받은 학생:", topMathStudent);
 
 
-
 // 6. 모든 학생들의 점수를 과목별로 합치기 (reduce)
-const subjectScores = '';
-console.log("과목별 점수 합계:", subjectScores);
+let subjectScores = students.reduce(function (acc, student) {
+    acc.math += student.scores.math;
+    acc.english += student.scores.english;
+    acc.science += student.scores.science;
+    return acc;
+}, {math: 0, english: 0, science: 0});
+
+console.log("과목 별 점수:", subjectScores);
+
 
 
 // 7. 과목별 평균 점수 계산하기 (map)
